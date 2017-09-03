@@ -24,6 +24,7 @@ set -x
 docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
               -v ${LOCAL_STORAGE_PATH}:/data \
               -v /etc/localtime:/etc/localtime:ro \
+              -e LOCAL_NETWORK=192.168.0.0/24 \
               -e "OPENVPN_PROVIDER=${OPENVPN_PROVIDER}" \
               -e "OPENVPN_USERNAME=${OPENVPN_USERNAME}" \
               -e "OPENVPN_PASSWORD=${OPENVPN_PASSWORD}" \
