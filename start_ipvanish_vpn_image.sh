@@ -6,14 +6,13 @@ mkdir -p ./downloads/watch
 ENV_PASS="${VPN_PASSWORD:-UNSET}"
 
 if [ $ENV_PASS = "UNSET" ]; then 
-   echo -n Password: 
+   echo -n Password for IpVanish: 
    read -s password
    echo
 else
    password=$VPN_PASSWORD
 fi
 
-echo $password
 echo "Starting Docker container"
 OPENVPN_PROVIDER=IPVANISH
 OPENVPN_USERNAME=brettswift@gmail.com
@@ -32,6 +31,6 @@ docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
               -p 9091:9091 \
               haugene/transmission-openvpn
 
-              #-e "LOCAL_NETWORK=192.168.0.0/24" \
 
               #-e "OPENVPN_CONFIG=${OPENVPN_CONFIG}" \
+#              -e "LOCAL_NETWORK=192.168.0.0/24" \
