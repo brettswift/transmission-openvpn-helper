@@ -1,0 +1,15 @@
+# This file is parsed by load_config.sh
+# Sourcing this file, sets environment variables in other scripts that you can use.
+
+# You probably don't want to change these
+TRANSMISSION_HOME=downloads
+
+######## Modify below this line ############
+
+# set this to the webhook you created in slack.
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/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
+
+# when sourced these will be sent to the transmission docker image.
+OPENVPN_PROVIDER=IPVANISH
+OPENVPN_USERNAME=brettswift@gmail.com
+OPENVPN_CONFIG=ipvanish-CA-Vancouver-yvr-c02

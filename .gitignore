@@ -1,2 +1,5 @@
 *.torrent
 downloads
+.DS_Store
+*.log
+conf
