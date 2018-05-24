@@ -8,7 +8,7 @@ It contains:
 * script to start a docker image
 * scripts to inspect the status of your torrents & debug.
 
-# Pre Requisits
+# Pre Requisites
 
 ## Install docker
 
