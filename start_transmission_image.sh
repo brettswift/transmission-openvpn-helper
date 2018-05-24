@@ -1,12 +1,15 @@
 #!/bin/bash
 #set -x
 
-mkdir -p ./downloads/watch
+# Source environment variables from config
+. ./load_config.sh
+
+mkdir -p ./$TRANSMISSION_HOME/watch
 
 ENV_PASS="${VPN_PASSWORD:-UNSET}"
 
 if [ $ENV_PASS = "UNSET" ]; then 
-   echo -n Password for IpVanish: 
+   echo -n Password for ${OPENVPN_USERNAME} at ${OPENVPN_PROVIDER}: 
    read -s password
    echo
 else
@@ -14,16 +17,19 @@ else
 fi
 
 echo "Starting Docker container"
-OPENVPN_PROVIDER=IPVANISH
-OPENVPN_USERNAME=brettswift@gmail.com
+
 OPENVPN_PASSWORD=$password
-OPENVPN_CONFIG=ipvanish-CA-Vancouver-yvr-c02
-LOCAL_STORAGE_PATH=/Users/bswift/torrents/downloads/
+LOCAL_STORAGE_PATH="$PWD"/${TRANSMISSION_HOME}
+
+# Docker won't let you mount /etc.  So lets work around that. 
+cp /etc/localtime .timezone
+TIME_ZONE_PATH="$PWD"/.timezone
+# TIME_ZONE_PATH=/etc/localtime
 
 set -x
 docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
               -v ${LOCAL_STORAGE_PATH}:/data \
-              -v /etc/localtime:/etc/localtime:ro \
+              -v ${TIME_ZONE_PATH}:/etc/localtime:ro \
               -e LOCAL_NETWORK=192.168.0.0/24 \
               -e "OPENVPN_PROVIDER=${OPENVPN_PROVIDER}" \
               -e "OPENVPN_USERNAME=${OPENVPN_USERNAME}" \
@@ -35,3 +41,5 @@ docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
 
               #-e "OPENVPN_CONFIG=${OPENVPN_CONFIG}" \
 #              -e "LOCAL_NETWORK=192.168.0.0/24" \
+
+echo "Transmission is now running! run 'docker ps' to see.. "
