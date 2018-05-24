@@ -37,6 +37,10 @@ By default it is "./transmission/watch",  but the root folder "transmission" may
 
 `./show_torrent_status.sh`
 
+## Get your files out!
+
+see `transmission/transmission-home/completed` for your completed torrents. 
+
 ## Known Issues
 
 Transmission is supposed to watch the watch folder.   I find that sometimes it doesn't pick up torrents very quickly.
