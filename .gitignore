@@ -1,5 +1,6 @@
 *.torrent
 downloads
+transmission
 .DS_Store
 *.log
 conf

@@ -31,7 +31,7 @@ If you need to add new configurations, be sure the `./start_transmission_image.s
 
 ## Drop files into the watch folder
 
-By default it is "./transmission/watch",  but the root folder "transmission" may be changed by a configuration in the `conf` file.
+By default it is "`./transmission/watch`,  but the root folder `transmission` set by the `TRANSMISSION_HOME=transmission` config value in `conf`.
 
 ## Monitor the torrents
 
