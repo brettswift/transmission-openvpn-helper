@@ -2,7 +2,7 @@
 # Sourcing this file, sets environment variables in other scripts that you can use.
 
 # You probably don't want to change these
-TRANSMISSION_HOME=downloads
+TRANSMISSION_HOME=transmission
 
 ######## Modify below this line ############
 
